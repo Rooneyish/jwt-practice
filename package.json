@@ -1,0 +1,26 @@
+{
+  "name": "jwt-practice",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rooneyish/jwt-practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rooneyish/jwt-practice/issues"
+  },
+  "homepage": "https://github.com/Rooneyish/jwt-practice#readme",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.1"
+  }
+}
