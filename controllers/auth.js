@@ -27,7 +27,8 @@ export const registerUser = async (req, res) => {
       password: hastedPassword,
     });
 
-    const token = jwt.sign({ id: newUser._id }, secretKey, { expiresIn: "1h" });
+    const token = jwt.sign({ id: newUser._id }, secretKey);
+    console.log("Generated token: ", token);
 
     res.json({
       success: true,
@@ -60,8 +61,9 @@ export const loginUser = async (req,res) => {
       throw new Error("Email or Password not valid!");
     }
 
-    const token = jwt.sign({ id: isUserExist._id }, secretKey, { expiresIn: "1h" });
-
+    const token = jwt.sign({ id: isUserExist._id }, secretKey);
+    console.log("Generated token: ", token);
+    
     res.json({
       success: true,
       message: "User Logged-In successfully !",
