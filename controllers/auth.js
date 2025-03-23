@@ -1,5 +1,8 @@
 import User from "../models/user.js";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+
+const secretKey = process.env.JWT_SECRET || "secretKey";
 
 export const registerUser = async (req, res) => {
   try {
@@ -24,11 +27,14 @@ export const registerUser = async (req, res) => {
       password: hastedPassword,
     });
 
+    const token = jwt.sign({ id: newUser._id }, secretKey, { expiresIn: "1h" });
+
     res.json({
       success: true,
       message: "User registered successfully !",
       data: {
         user: newUser,
+        token,
       },
     });
   } catch (error) {
@@ -54,11 +60,14 @@ export const loginUser = async (req,res) => {
       throw new Error("Email or Password not valid!");
     }
 
+    const token = jwt.sign({ id: isUserExist._id }, secretKey, { expiresIn: "1h" });
+
     res.json({
       success: true,
       message: "User Logged-In successfully !",
       data: {
         user: isUserExist,
+        token,
       },
     });
   } catch (error) {

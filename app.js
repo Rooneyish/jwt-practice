@@ -1,6 +1,8 @@
 import express from "express";
 import authRouter from "./routes/auth.js";
-
+import userRouter from "./routes/user.js";
+import connectDB from "./databases/mongodb.js";
+import 'dotenv/config';
 const app = express();
 
 const port = 7000;
@@ -12,9 +14,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRouter);
-// app.use("/api/user", userRouter);
+app.use("/api/user", userRouter);
 
 app.listen(port, async () => {
   console.log(`App listening on port ${port}`);
-//   await connectDB();
+   await connectDB();
 });
